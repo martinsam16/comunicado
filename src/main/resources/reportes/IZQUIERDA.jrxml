@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.13.0.final using JasperReports Library version 6.13.0-46ada4d1be8f3c5985fd0b6146f3ed44caed6f05  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="comunicado_sr" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="216fe6cd-7eb1-4862-9ad6-981e455a4717">
+	<parameter name="curso" class="java.lang.String"/>
+	<parameter name="profesor" class="java.lang.String"/>
+	<parameter name="hora" class="java.lang.String"/>
+	<parameter name="contenido" class="java.lang.String"/>
+	<parameter name="background" class="java.lang.String"/>
+	<parameter name="modalidad" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<summary>
+		<band height="500" splitType="Stretch">
+			<textField>
+				<reportElement x="30" y="50" width="410" height="59" uuid="c63d32b2-6bf3-4dab-88f0-3ab2c36e91d7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="29" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{curso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="30" y="110" width="340" height="59" uuid="41b9463d-6b5e-4aef-a3c0-7b7fef05829f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="22" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{hora}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="30" y="240" width="340" height="200" uuid="45bff0d4-861d-4d29-8b4d-a035f0f7a484"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="25" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{contenido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="320" y="450" width="480" height="40" uuid="fa540eb4-982f-487e-b2f1-9a4a3c1f13fa"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="19" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Docente " + $P{profesor}]]></textFieldExpression>
+			</textField>
+			<image hAlign="Center" vAlign="Middle" onErrorType="Blank">
+				<reportElement x="430" y="90" width="340" height="340" uuid="9cdfa742-ed8a-4ef6-a0d2-c1392828affc"/>
+				<imageExpression><![CDATA[$P{background}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="630" y="0" width="140" height="30" uuid="0bf2e392-4fd1-4ee0-8884-fcf85dd9620d"/>
+				<imageExpression><![CDATA["https://upload.wikimedia.org/wikipedia/commons/2/21/Logo_del_Ministerio_de_Educaci%C3%B3n_del_Per%C3%BA_-_MINEDU.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="30" y="180" width="340" height="40" uuid="f8917a01-e31d-4d59-bcef-c4d4595cf37f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="16" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Modalidad - "+$P{modalidad}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="10" y="0" width="90" height="45" uuid="c43934da-1a7c-4c22-b416-9cc75cc1ee4d"/>
+				<imageExpression><![CDATA["https://as01.epimg.net/peru/imagenes/2020/04/08/tikitakas/1586367220_338232_1586367563_noticia_normal_recorte1.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</summary>
+</jasperReport>

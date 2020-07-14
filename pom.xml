@@ -12,7 +12,6 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports -->
         <dependency>
             <groupId>net.sf.jasperreports</groupId>
             <artifactId>jasperreports</artifactId>
@@ -24,8 +23,13 @@
             <artifactId>jasperreports-fonts</artifactId>
             <version>6.13.0</version>
         </dependency>
-        
-        
+<!--        
+        <dependency>
+            <groupId>com.toedter</groupId>
+            <artifactId>jcalendar</artifactId>
+            <version>1.4</version>
+        </dependency>-->
+
         
     </dependencies>
     <build>

@@ -11,6 +11,7 @@ public class Comunicado {
     private String contenido;
     private String hora;
     private String background;
+    private EstiloComunicado estilo;
 
     public String getProfesor() {
         return profesor;
@@ -59,7 +60,14 @@ public class Comunicado {
     public void setModalidad(String modalidad) {
         this.modalidad = modalidad;
     }
-    
+
+    public EstiloComunicado getEstilo() {
+        return estilo;
+    }
+
+    public void setEstilo(EstiloComunicado estilo) {
+        this.estilo = estilo;
+    }
 
     public Map toMap() {
         Map parametros = new HashMap();
@@ -69,9 +77,8 @@ public class Comunicado {
         parametros.put("contenido", this.getContenido());
         parametros.put("background", this.getBackground());
         parametros.put("modalidad", this.getModalidad());
-        
+
         return parametros;
     }
-    
-    
+
 }

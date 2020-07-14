@@ -1,20 +1,22 @@
 package vista;
 
 import controlador.ComunicadoC;
+import javax.swing.DefaultComboBoxModel;
 import modelo.Comunicado;
+import modelo.EstiloComunicado;
 
 public class main extends javax.swing.JFrame {
-
+    
     private final ComunicadoC comunicadoC;
     private final Comunicado comunicado;
-
+    
     public main() {
         initComponents();
         setLocationRelativeTo(null);
         comunicadoC = new ComunicadoC();
         comunicado = new Comunicado();
     }
-
+    
     private void setearDatos() {
         comunicado.setCurso(curso.getSelectedItem() + "");
         comunicado.setProfesor(profesor.getSelectedItem() + "");
@@ -22,8 +24,9 @@ public class main extends javax.swing.JFrame {
         comunicado.setContenido(contenido.getText());
         comunicado.setBackground(background.getText());
         comunicado.setModalidad(modalidad.getSelectedItem() + "");
+        comunicado.setEstilo((EstiloComunicado) estilo.getSelectedItem());
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -43,6 +46,8 @@ public class main extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         modalidad = new javax.swing.JComboBox<>();
         profesor = new javax.swing.JComboBox<>();
+        estilo = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Generador de comunicados");
@@ -91,6 +96,11 @@ public class main extends javax.swing.JFrame {
         profesor.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         profesor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pablo César Samán Oré", "Rosa de Guadalupe Arata Rodriguez" }));
 
+        estilo.setModel(new DefaultComboBoxModel(EstiloComunicado.values()));
+        estilo.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+
+        jLabel7.setText("Estilo");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -100,17 +110,19 @@ public class main extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(background)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(hora, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
-                            .addComponent(profesor, javax.swing.GroupLayout.Alignment.LEADING, 0, 0, Short.MAX_VALUE)
-                            .addComponent(curso, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(modalidad, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(hora, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+                            .addComponent(profesor, 0, 0, Short.MAX_VALUE)
+                            .addComponent(curso, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel2)
+                            .addComponent(modalidad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel7)
+                            .addComponent(estilo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -145,11 +157,15 @@ public class main extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addGap(3, 3, 3)
                         .addComponent(hora, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel5)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel7)))
+                .addGap(3, 3, 3)
+                .addComponent(estilo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -214,7 +230,7 @@ public class main extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new main().setVisible(true);
-
+                
             }
         });
     }
@@ -224,6 +240,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JButton btnGenerar;
     private javax.swing.JTextArea contenido;
     private javax.swing.JComboBox<String> curso;
+    private javax.swing.JComboBox<String> estilo;
     private javax.swing.JTextField hora;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -231,6 +248,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> modalidad;
