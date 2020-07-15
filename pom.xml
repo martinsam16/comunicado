@@ -23,36 +23,11 @@
             <artifactId>jasperreports-fonts</artifactId>
             <version>6.13.0</version>
         </dependency>
-<!--        
-        <dependency>
-            <groupId>com.toedter</groupId>
-            <artifactId>jcalendar</artifactId>
-            <version>1.4</version>
-        </dependency>-->
-
         
     </dependencies>
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <configuration>
-                    <outputDirectory>${project.build.directory}/lib</outputDirectory>
-                    <excludeTransitive>false</excludeTransitive> 
-                    <stripVersion>false</stripVersion>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>copy-dependencies</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>copy-dependencies</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <!-- Add LIB folder to classPath -->
+            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -67,22 +42,81 @@
                     </archive>
                 </configuration>
             </plugin>
-
+            
+            <!--Incluir librerias en el jar-->
+            
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <version>1.8</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.2</version>
                 <executions>
                     <execution>
-                        <id>add-source</id>
-                        <phase>generate-sources</phase>
+                        <phase>package</phase>
                         <goals>
-                            <goal>add-source</goal>
+                            <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <sources>
-                                <source>${basedir}/src/main/resources</source>
-                            </sources>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                        <exclude>.settings/**</exclude>
+                                        <exclude>*.classpath</exclude>
+                                        <exclude>*.project</exclude>
+                                        <exclude>*.txt</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            
+            <!--Generar exe a partir del jar-->
+            
+            <plugin>
+                <groupId>com.akathist.maven.plugins.launch4j</groupId>
+                <artifactId>launch4j-maven-plugin</artifactId>
+                <version>1.5.2</version>
+                <executions>
+                    <execution>
+                        <id>l4j-gui</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>launch4j</goal>
+                        </goals>
+                        <configuration>
+                            <headerType>gui</headerType>
+                            <outfile>target/comunicado.exe</outfile>
+                            <jar>target/${project.artifactId}-${project.version}.jar</jar>
+                            <dontWrapJar>false</dontWrapJar>
+                            <errTitle>Error en launch4j</errTitle>
+                            <classPath>
+                                <mainClass>vista.main</mainClass>
+                            </classPath>
+                            <icon>src/main/resources/icono/icon.ico</icon>
+                            <jre>
+                                <minVersion>1.8.0</minVersion>
+                                <maxVersion>1.8.0_261</maxVersion>
+                                <initialHeapSize>512</initialHeapSize>
+                                <maxHeapSize>1024</maxHeapSize>
+                            </jre>
+                            <versionInfo>
+                                <fileVersion>1.0.0.0</fileVersion>
+                                <txtFileVersion>1.0.0.0</txtFileVersion>
+                                <fileDescription>comunicado</fileDescription>
+                                <copyright>Copyright (c) 2020</copyright>
+                                <companyName>martinsaman</companyName>
+                                <productVersion>0.0.0.1</productVersion>
+                                <txtProductVersion>${project.version}</txtProductVersion>
+                                <productName>Generador de Comunicados</productName>
+                                <internalName>comunicado</internalName>
+                                <originalFilename>comunicado.exe</originalFilename>
+                            </versionInfo>
                         </configuration>
                     </execution>
                 </executions>

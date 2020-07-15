@@ -12,7 +12,7 @@ public class ComunicadoC {
     public void generarReporte() {
         try {
             reporteService = new ReporteService(comunicado);
-            reporteService.generarReporte();
+            reporteService.start();
         } catch (Exception e) {
             e.printStackTrace();
         }
