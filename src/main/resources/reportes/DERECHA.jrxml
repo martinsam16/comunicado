@@ -7,58 +7,60 @@
 	<parameter name="contenido" class="java.lang.String"/>
 	<parameter name="background" class="java.lang.String"/>
 	<parameter name="modalidad" class="java.lang.String"/>
+	<parameter name="minedu" class="java.lang.String"/>
+	<parameter name="aprendo" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<summary>
 		<band height="546" splitType="Stretch">
 			<textField>
-				<reportElement x="30" y="50" width="760" height="59" uuid="c63d32b2-6bf3-4dab-88f0-3ab2c36e91d7"/>
+				<reportElement x="30" y="50" width="740" height="59" uuid="c63d32b2-6bf3-4dab-88f0-3ab2c36e91d7"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="29" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{curso}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="30" y="500" width="760" height="40" uuid="fa540eb4-982f-487e-b2f1-9a4a3c1f13fa"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="Arial" size="19" isBold="true"/>
+				<reportElement x="391" y="120" width="400" height="59" uuid="41b9463d-6b5e-4aef-a3c0-7b7fef05829f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="22" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Docente: " + $P{profesor}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{hora}]]></textFieldExpression>
 			</textField>
-			<image hAlign="Center" vAlign="Middle" onErrorType="Blank">
-				<reportElement x="30" y="120" width="351" height="370" uuid="9cdfa742-ed8a-4ef6-a0d2-c1392828affc"/>
-				<imageExpression><![CDATA[$P{background}]]></imageExpression>
-			</image>
-			<image>
-				<reportElement x="652" y="7" width="140" height="30" uuid="0bf2e392-4fd1-4ee0-8884-fcf85dd9620d"/>
-				<imageExpression><![CDATA["https://upload.wikimedia.org/wikipedia/commons/2/21/Logo_del_Ministerio_de_Educaci%C3%B3n_del_Per%C3%BA_-_MINEDU.png"]]></imageExpression>
-			</image>
-			<image>
-				<reportElement x="10" y="0" width="90" height="45" uuid="c43934da-1a7c-4c22-b416-9cc75cc1ee4d"/>
-				<imageExpression><![CDATA["https://as01.epimg.net/peru/imagenes/2020/04/08/tikitakas/1586367220_338232_1586367563_noticia_normal_recorte1.jpg"]]></imageExpression>
-			</image>
 			<textField textAdjust="ScaleFont">
-				<reportElement x="390" y="231" width="400" height="270" isRemoveLineWhenBlank="true" uuid="e9fabfe0-542b-4ea3-8aa2-630cb446df46"/>
+				<reportElement x="391" y="230" width="400" height="270" isRemoveLineWhenBlank="true" uuid="45bff0d4-861d-4d29-8b4d-a035f0f7a484"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Arial" size="24" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{contenido}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="390" y="180" width="400" height="40" uuid="2a128e3c-891e-49e6-b939-900a17382d00"/>
+				<reportElement x="30" y="500" width="761" height="40" uuid="fa540eb4-982f-487e-b2f1-9a4a3c1f13fa"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="19" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Docente: " + $P{profesor}]]></textFieldExpression>
+			</textField>
+			<image hAlign="Center" vAlign="Middle" onErrorType="Blank">
+				<reportElement x="10" y="130" width="351" height="370" uuid="9cdfa742-ed8a-4ef6-a0d2-c1392828affc"/>
+				<imageExpression><![CDATA[$P{background}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="652" y="7" width="140" height="30" uuid="0bf2e392-4fd1-4ee0-8884-fcf85dd9620d"/>
+				<imageExpression><![CDATA[$P{minedu}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="391" y="179" width="400" height="40" uuid="f8917a01-e31d-4d59-bcef-c4d4595cf37f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="16" isBold="true" isItalic="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Modalidad - "+$P{modalidad}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="390" y="121" width="400" height="59" uuid="6cd0160a-ab3d-44f1-be62-f5291600adbd"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="22" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{hora}]]></textFieldExpression>
-			</textField>
+			<image>
+				<reportElement x="10" y="0" width="90" height="45" uuid="c43934da-1a7c-4c22-b416-9cc75cc1ee4d"/>
+				<imageExpression><![CDATA[$P{aprendo}]]></imageExpression>
+			</image>
 		</band>
 	</summary>
 </jasperReport>

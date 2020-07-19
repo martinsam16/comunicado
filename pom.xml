@@ -12,6 +12,13 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     <dependencies>
+        <!--ui-->
+        <dependency>
+            <groupId>io.github.vincenzopalazzo</groupId>
+            <artifactId>material-ui-swing</artifactId>
+            <version>1.1.1_pre-release_6.1</version>
+        </dependency>
+        <!--reportes-->
         <dependency>
             <groupId>net.sf.jasperreports</groupId>
             <artifactId>jasperreports</artifactId>

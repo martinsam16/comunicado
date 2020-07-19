@@ -7,9 +7,6 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.Transferable;
 import java.awt.image.BufferedImage;
 import java.io.InputStream;
-import java.lang.management.ManagementFactory;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import modelo.Comunicado;
 import net.sf.jasperreports.engine.DefaultJasperReportsContext;
 import net.sf.jasperreports.engine.JRException;
@@ -41,29 +38,13 @@ public class ReporteService {
         }
     }
 
-    public void start() {
-        int numeroHilos = ManagementFactory.getThreadMXBean().getThreadCount();
-        Runnable generarReporte = () -> {
-            try {
-                generarReporte(jprint);
-            } catch (JRException e) {
-            }
-        };
-
-        Runnable copiarImagenPortapapeles = () -> {
-            try {
-                copiarImagenPortapapeles(jprint);
-            } catch (JRException e) {
-            }
-        };
-
-        ExecutorService executor = Executors.newFixedThreadPool(numeroHilos);
-        executor.execute(copiarImagenPortapapeles);
-        executor.execute(generarReporte);
-        executor.shutdown();
+    public BufferedImage generarImagen() throws JRException {
+        BufferedImage imagen = generarImagen(jprint);
+        copiarImagenPortapapeles(imagen);
+        return imagen;
     }
 
-    private void generarReporte(JasperPrint jprint) throws JRException {
+    public void imprimir() throws JRException {
         try {
             JasperViewer view = new JasperViewer(jprint, false);
             view.setExtendedState(MAXIMIZED_BOTH);
@@ -74,18 +55,19 @@ public class ReporteService {
 
     }
 
-    private void copiarImagenPortapapeles(JasperPrint jprint) throws JRException {
-        try {
-            DefaultJasperReportsContext.getInstance();
+    private BufferedImage generarImagen(JasperPrint jprint) throws JRException {
+        DefaultJasperReportsContext.getInstance();
+        return (BufferedImage) JasperPrintManager.printPageToImage(jprint, 0, 1.6f);
+    }
 
-            BufferedImage rendered_image = (BufferedImage) JasperPrintManager.printPageToImage(jprint, 0, 1.6f);
+    private void copiarImagenPortapapeles(BufferedImage imagen) {
+        try {
             Toolkit.getDefaultToolkit()
                     .getSystemClipboard()
-                    .setContents(new ImageTransferable(rendered_image), (Clipboard clipboard, Transferable contents) -> {
+                    .setContents(new ImageTransferable(imagen), (Clipboard clipboard, Transferable contents) -> {
                         System.out.println("Alquien ha reemplazado lo que meti en el Clipboard >:v");
                     });
-
-        } catch (JRException | HeadlessException e) {
+        } catch (HeadlessException e) {
             e.printStackTrace();
         }
     }

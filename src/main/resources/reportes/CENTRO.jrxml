@@ -7,6 +7,8 @@
 	<parameter name="contenido" class="java.lang.String"/>
 	<parameter name="background" class="java.lang.String"/>
 	<parameter name="modalidad" class="java.lang.String"/>
+	<parameter name="minedu" class="java.lang.String"/>
+	<parameter name="aprendo" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -32,11 +34,11 @@
 			</image>
 			<image>
 				<reportElement x="651" y="7" width="140" height="30" uuid="0bf2e392-4fd1-4ee0-8884-fcf85dd9620d"/>
-				<imageExpression><![CDATA["https://upload.wikimedia.org/wikipedia/commons/2/21/Logo_del_Ministerio_de_Educaci%C3%B3n_del_Per%C3%BA_-_MINEDU.png"]]></imageExpression>
+				<imageExpression><![CDATA[$P{minedu}]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="10" y="0" width="90" height="45" uuid="c43934da-1a7c-4c22-b416-9cc75cc1ee4d"/>
-				<imageExpression><![CDATA["https://as01.epimg.net/peru/imagenes/2020/04/08/tikitakas/1586367220_338232_1586367563_noticia_normal_recorte1.jpg"]]></imageExpression>
+				<imageExpression><![CDATA[$P{aprendo}]]></imageExpression>
 			</image>
 			<textField>
 				<reportElement x="30" y="110" width="400" height="59" uuid="4652da65-f628-4457-8450-551ea6c0a5a9"/>

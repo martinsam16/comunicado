@@ -4,6 +4,6 @@ public enum EstiloComunicado {
     IZQUIERDA,
     DERECHA,
     CENTRO,
-    ARRIBA,
-    ABAJO
+//    ARRIBA,
+//    ABAJO
 }

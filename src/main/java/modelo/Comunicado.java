@@ -77,7 +77,8 @@ public class Comunicado {
         parametros.put("contenido", this.getContenido());
         parametros.put("background", this.getBackground());
         parametros.put("modalidad", this.getModalidad());
-
+        parametros.put("minedu", getClass().getResource("/imagenes/minedu.png").getPath());
+        parametros.put("aprendo", getClass().getResource("/imagenes/aprendo_en_casa.jpg").getPath());
         return parametros;
     }
 
