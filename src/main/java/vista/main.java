@@ -4,6 +4,7 @@ import controlador.ComunicadoC;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.lang.management.ManagementFactory;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -25,7 +26,7 @@ public class main extends javax.swing.JFrame {
     int numeroHilos = ManagementFactory.getThreadMXBean().getThreadCount();
     ExecutorService executor = Executors.newFixedThreadPool(numeroHilos);
 
-    public main() {
+    public main() throws IOException {
         initComponents();
         setLocationRelativeTo(null);
         comunicadoC = new ComunicadoC();
@@ -505,7 +506,10 @@ public class main extends javax.swing.JFrame {
         }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new main().setVisible(true);
+                try {
+                    new main().setVisible(true);
+                } catch (Exception e) {
+                }
 
             }
         });

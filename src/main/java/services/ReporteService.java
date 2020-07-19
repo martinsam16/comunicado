@@ -35,6 +35,7 @@ public class ReporteService {
             JasperReport jasperReport = (JasperReport) JRLoader.loadObject(inputStreamReporte);
             jprint = JasperFillManager.fillReport(jasperReport, comunicado.toMap());
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

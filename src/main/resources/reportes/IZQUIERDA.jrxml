@@ -7,8 +7,8 @@
 	<parameter name="contenido" class="java.lang.String"/>
 	<parameter name="background" class="java.lang.String"/>
 	<parameter name="modalidad" class="java.lang.String"/>
-	<parameter name="minedu" class="java.lang.String"/>
-	<parameter name="aprendo" class="java.lang.String"/>
+	<parameter name="minedu" class="java.lang.Object"/>
+	<parameter name="aprendo" class="java.lang.Object"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>

@@ -1,7 +1,10 @@
 package modelo;
 
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import javax.imageio.ImageIO;
 
 public class Comunicado {
 
@@ -12,7 +15,14 @@ public class Comunicado {
     private String hora;
     private String background;
     private EstiloComunicado estilo;
+    private BufferedImage minedu;
+    private BufferedImage aprendo;
 
+    public Comunicado() throws IOException {
+        this.aprendo = ImageIO.read(getClass().getResource("/imagenes/aprendo_en_casa.jpg"));
+        this.minedu = ImageIO.read(getClass().getResource("/imagenes/minedu.png"));
+    }
+    
     public String getProfesor() {
         return profesor;
     }
@@ -69,7 +79,7 @@ public class Comunicado {
         this.estilo = estilo;
     }
 
-    public Map toMap() {
+    public Map toMap() throws IOException {
         Map parametros = new HashMap();
         parametros.put("curso", this.getCurso());
         parametros.put("profesor", this.getProfesor());
@@ -77,8 +87,8 @@ public class Comunicado {
         parametros.put("contenido", this.getContenido());
         parametros.put("background", this.getBackground());
         parametros.put("modalidad", this.getModalidad());
-        parametros.put("minedu", getClass().getResource("/imagenes/minedu.png").getPath());
-        parametros.put("aprendo", getClass().getResource("/imagenes/aprendo_en_casa.jpg").getPath());
+        parametros.put("minedu", minedu);
+        parametros.put("aprendo", aprendo);
         return parametros;
     }
 
